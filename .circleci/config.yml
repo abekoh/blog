@@ -9,7 +9,9 @@ commands:
     steps:
       - run:
           name: build hugo
-          command: HUGO_ENV=production hugo -v
+          command: |
+            HUGO_ENV=production hugo -v
+            ls -la public/
 jobs:
   test:
     executor: hugo-executor
@@ -27,6 +29,7 @@ jobs:
       - deploy:
           name: deploy to Github Pages
           command: |
+            ls -la public/
             DEPLOY_DIR=deploy
             git config --global user.email $(git --no-pager show -s --format='%ae' HEAD)
             git config --global user.name $CIRCLE_USERNAME
