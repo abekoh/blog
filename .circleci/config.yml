@@ -14,7 +14,8 @@ jobs:
       - deploy:
           name: deploy to Github Pages
           command: |
-            GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_fingerprint'
+            ls -la ~/.ssh
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa_fingerprint"
             DEPLOY_DIR=deploy
             git config --global user.email $USER_EMAIL
             git config --global user.name $CIRCLE_USERNAME
