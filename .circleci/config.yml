@@ -23,6 +23,7 @@ jobs:
             cd $DEPLOY_DIR
             rm -vrf ./*
             cp -v -R ../public/* ./
+            echo "blog.abekoh.dev" > CNAME
             git add -f .
             git commit -m "Deploy #$CIRCLE_BUILD_NUM from CircleCI [ci skip]"
             git push origin master -f
