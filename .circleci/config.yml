@@ -1,31 +1,13 @@
 version: 2.1
-executors:
-  hugo-executor:
-    docker:
-      - image: cibuilds/hugo:latest
-commands:
-  build-hugo:
-    description: "build hugo"
-    steps:
-      - run:
-          name: build hugo
-          command: |
-            HUGO_ENV=production hugo -v
-            ls -la public/
+orbs:
+  hugo: circleci/hugo@0.4.1
 jobs:
-  test:
-    executor: hugo-executor
-    steps:
-      - checkout
-      - build-hugo
   deploy:
-    executor: hugo-executor
+    docker:
+      - image: cibuilds/base
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "65:2a:9b:73:be:ca:5a:f0:85:47:43:75:5d:e7:00:a7"
-      - checkout
-      - build-hugo
+      - attach_workspace:
+          at: .
       - deploy:
           name: deploy to Github Pages
           command: |
@@ -42,12 +24,12 @@ jobs:
             git push origin master -f
 workflows:
   version: 2
-  default-flow:
+  main:
     jobs:
-      - test
+      - hugo/build
       - deploy:
           requires:
-            - test
+            - hugo/build
           filters:
             branches:
               only: master
