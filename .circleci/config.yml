@@ -3,16 +3,47 @@ executors:
   hugo-executor:
     docker:
       - image: cibuilds/hugo:latest
+commands:
+  build-hugo:
+    description: "build hugo"
+    steps:
+      - run:
+          name: build hugo
+          command: HUGO_ENV=production hugo -v
 jobs:
-  build:
+  test:
     executor: hugo-executor
     steps:
       - checkout
-      - run:
-          name: hugo build
-          command: HUGO_ENV=production hugo -v
+      - build-hugo
+  deploy:
+    executor: hugo-executor
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "65:2a:9b:73:be:ca:5a:f0:85:47:43:75:5d:e7:00:a7"
+      - checkout
+      - build-hugo
+      - deploy:
+          name: deploy to Github Pages
+          command: |
+            DEPLOY_DIR=deploy
+            git config --global user.email $(git --no-pager show -s --format='%ae' HEAD)
+            git config --global user.name $CIRCLE_USERNAME
+            git clone git@github.com:abekoh/abekoh.github.io.git $DEPLOY_DIR
+            cd $DEPLOY_DIR
+            rsync -arv --delete ../public/* .
+            git add -f .
+            git commit -m "Deploy #$CIRCLE_BUILD_NUM from CircleCI [ci skip]"
+            git push origin master -f
 workflows:
-  version: 2.1
+  version: 2
   default-flow:
     jobs:
-      - build
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
