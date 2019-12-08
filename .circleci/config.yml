@@ -13,6 +13,6 @@ jobs:
           command: HUGO_ENV=production hugo -v
 workflows:
   version: 2.1
-  master-merged:
+  default-flow:
     jobs:
       - build

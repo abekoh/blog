@@ -1,5 +1,5 @@
 # sample: https://github.com/tosi29/inkblotty/blob/master/exampleSite/config.toml
-baseURL = "https://abekoh.github.io/"
+baseURL = "https://abekoh.github.io/
 title = "abekoh's tech note"
 author = "abekoh"
 theme = "inkblotty"
