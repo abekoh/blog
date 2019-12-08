@@ -14,10 +14,11 @@ jobs:
       - deploy:
           name: deploy to Github Pages
           command: |
+            GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_fingerprint'
             DEPLOY_DIR=deploy
             git config --global user.email $USER_EMAIL
             git config --global user.name $CIRCLE_USERNAME
-            yes yes | git clone git@github.com:abekoh/abekoh.github.io.git $DEPLOY_DIR
+            git clone git@github.com:abekoh/abekoh.github.io.git $DEPLOY_DIR
             cd $DEPLOY_DIR
             rm -vrf ./*
             cp -v -R ../public/* ./
