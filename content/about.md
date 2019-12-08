@@ -5,3 +5,5 @@ draft: true
 ---
 
 Hello! This is abekoh.
+
+https://blog.abekoh.dev
