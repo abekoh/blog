@@ -15,4 +15,8 @@ workflows:
   version: 2.1
   master-merged:
     jobs:
-      - build
+      - build:
+
+          # filters:
+          #   branches:
+          #     only: master
