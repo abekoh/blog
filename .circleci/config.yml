@@ -26,7 +26,8 @@ workflows:
   version: 2
   main:
     jobs:
-      - hugo/build
+      - hugo/build:
+          html-proofer: false
       - deploy:
           requires:
             - hugo/build
