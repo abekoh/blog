@@ -6,12 +6,12 @@ jobs:
     docker:
       - image: cibuilds/base
     steps:
+      - add_ssh_keys
       - attach_workspace:
           at: .
       - deploy:
           name: deploy to Github Pages
           command: |
-            ls -la public/
             DEPLOY_DIR=deploy
             git config --global user.email $USER_EMAIL
             git config --global user.name $CIRCLE_USERNAME
