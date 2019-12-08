@@ -4,8 +4,11 @@ orbs:
 jobs:
   deploy:
     docker:
-      - image: circleci/node:latest
+      - image: cibuilds/base
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "0c:27:f7:45:9b:96:e0:5f:51:26:9e:cf:35:a3:c6:24"
       - attach_workspace:
           at: .
       - deploy:
@@ -14,7 +17,7 @@ jobs:
             DEPLOY_DIR=deploy
             git config --global user.email $USER_EMAIL
             git config --global user.name $CIRCLE_USERNAME
-            git clone --depth 1 git@github.com:abekoh/abekoh.github.io.git $DEPLOY_DIR
+            git clone git@github.com:abekoh/abekoh.github.io.git $DEPLOY_DIR
             cd $DEPLOY_DIR
             rm -vrf ./*
             cp -v -R ../public/* ./
