@@ -1,10 +1,18 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+executors:
+  hugo-executor:
     docker:
       - image: cibuilds/hugo:latest
+jobs:
+  build:
+    executor: hugo-executor
     steps:
       - checkout
       - run:
-          name: hoge
+          name: hugo build
           command: HUGO_ENV=production hugo -v
+workflows:
+  version: 2.1
+  master-merged:
+    jobs:
+      - build
