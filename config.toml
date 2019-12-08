@@ -1,0 +1,46 @@
+# sample: https://github.com/tosi29/inkblotty/blob/master/exampleSite/config.toml
+baseURL = "https://abekoh.dev/"
+title = "abekoh's tech note"
+author = "abekoh"
+theme = "inkblotty"
+paginate = 10
+
+languageCode = "ja-jp"
+DefaultContentLanguage = "ja-jp"
+hasCFJLanguage = "true"
+
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+
+disqusShortname = ""
+googleAnalytics = ""
+
+summaryLength=150
+
+[permalinks]
+  post = "/:slug/"
+  page = "/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  archive = "archives"
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 10
+
+[Params]
+  readmore = true
+
+[outputs]                          # c.f. https://gohugo.io/templates/output-formats/
+  home = ["HTML", "RSS"]
+  page =  ["HTML"]
+  section =  ["HTML", "RSS"]
+  taxonomyTerm =  ["HTML", "RSS"]
+  taxonomy =  ["HTML", "RSS"]
+
+# [sitemap]
+#   filename = "sitemap.xml"  # c.f. https://gohugo.io/templates/sitemap-template/#configure-sitemap-xml
