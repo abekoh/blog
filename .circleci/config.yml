@@ -7,7 +7,8 @@ commands:
   build-hugo:
     description: "build hugo"
     steps:
-      - run: HUGO_ENV=production hugo -v
+      - name: build hugo
+        run: HUGO_ENV=production hugo -v
 jobs:
   test:
     executor: hugo-executor
