@@ -32,7 +32,8 @@ jobs:
             git config --global user.name $CIRCLE_USERNAME
             git clone git@github.com:abekoh/abekoh.github.io.git $DEPLOY_DIR
             cd $DEPLOY_DIR
-            rsync -arv --delete ../public/* .
+            rm -rf ./*
+            cp -R ../public/* ./
             git add -f .
             git commit -m "Deploy #$CIRCLE_BUILD_NUM from CircleCI [ci skip]"
             git push origin master -f
