@@ -8,7 +8,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "0c:27:f7:45:9b:96:e0:5f:51:26:9e:cf:35:a3:c6:24"
+            - "28:f9:b3:81:a2:64:0c:b2:55:f4:c3:c4:e4:40:8b:ae"
       - attach_workspace:
           at: .
       - deploy:
