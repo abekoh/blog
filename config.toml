@@ -1,47 +1,88 @@
-# sample: https://github.com/tosi29/inkblotty/blob/master/exampleSite/config.toml
-
 baseURL = "https://blog.abekoh.dev/"
+languageCode = "ja-jp"
 title = "abekoh's tech note"
-author = "abekoh"
-theme = "inkblotty"
+theme = "ezhil"
+hasCJKLanguage = "true"
+
+copyright = "©abekoh"
+
+# Enable syntax highlighting.
+pygmentsstyle = "solarized-dark"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+# Your Google analytics code.
+googleAnalytics = ""
+# Your Disqus sortname.
+disqusShortname = "nanashi"
+
+# Number of posts to show in recent posts list (Optional). Defaults to 10.
 paginate = 10
 
-languageCode = "ja-jp"
-DefaultContentLanguage = "ja-jp"
-hasCFJLanguage = "true"
+[params]
+    # Blog subtitle which appears below blog title. Supports markdown.
+    subtitle = "雑多になんでも技術メモ"
 
-enableInlineShortcodes = true
-footnoteReturnLinkContents = "^"
+    # Content types which are included in home page recent posts list.
+    mainSections = ["posts"]
 
-disqusShortname = ""
-googleAnalytics = ""
+    # Content types which are excludes Disqus comments.
+    disableDisqusTypes = ["page"]
 
-summaryLength=150
+    # If social media links are enabled then enable this to fetch icons from CDN instead of hosted on your site.
+    featherIconsCDN = true
 
-[permalinks]
-  post = "/:slug/"
-  page = "/:slug/"
+    # Specify favicon (icons/i.png maps to static/icons/i.png). No favicon if not defined.
+    favicon = "icons/avater.png"
 
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-  archive = "archives"
+    # Switch to dark mode or auto detect mode from OS (Optional).
+    # "dark" will set mode to dark and "auto" will switch to dark mode if OS is in dark mode.
+    # mode = "auto" # "dark" or "auto"
+
+    # Custom CSS added to default styles. Files added to `static` folder is copied as it is to
+    # root by Hugo. For example if you have custom CSS file under `static/css/custom.css` then
+    # you can specify custom css path as `css/custom.css`.
+    customCSS = "css/custom.css"
+    # Custom CSS added to dark mode style.
+    customDarkCSS = "css/custom-dark.css"
+
+    # Custom list of Javascript files to load. Just like custom CSS you can place js files under
+    # `static/js` folder and specify path here as `js/script-name.js`.
+    customJS = []
+
+# Main menu which appears below site header.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 
 [[menu.main]]
-  identifier = "about"
-  name = "About"
-  url = "/about/"
-  weight = 10
+name = "All posts"
+url = "/posts"
+weight = 2
 
-[Params]
-  readmore = true
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
 
-[outputs]                          # c.f. https://gohugo.io/templates/output-formats/
-  home = ["HTML", "RSS"]
-  page =  ["HTML"]
-  section =  ["HTML", "RSS"]
-  taxonomyTerm =  ["HTML", "RSS"]
-  taxonomy =  ["HTML", "RSS"]
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
 
-# [sitemap]
-#   filename = "sitemap.xml"  # c.f. https://gohugo.io/templates/sitemap-template/#configure-sitemap-xml
+# Social media links which shows up on site header.
+# Uses feather icons for icons. You can [search icon names from here](https://feathericons.com/).
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/abekoh"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/abekoh_bcky"
+
+# Enable tags.
+[taxonomies]
+   tag = "tags"
