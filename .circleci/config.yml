@@ -28,11 +28,10 @@ jobs:
             git commit -m "Deploy #$CIRCLE_BUILD_NUM from CircleCI [ci skip]"
             git push origin master -f
 workflows:
-  version: 2
+  version: 2.1
   main:
     jobs:
-      - hugo/build:
-          html-proofer: false
+      - hugo/build
       - deploy:
           requires:
             - hugo/build
