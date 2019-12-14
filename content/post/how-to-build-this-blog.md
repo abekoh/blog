@@ -23,7 +23,9 @@ Markdownでかけるのも嬉しい。非常にGitHubフレンドリーな感じ
 
 とりあえずこれを無編集で使ってます。
 
-https://github.com/zwbetz-gh/vanilla-bootstrap-hugo-theme
+~~https\://github.com/zwbetz-gh/vanilla-bootstrap-hugo-theme~~
+
+→ これに変更しました https://github.com/achary/engimo
 
 ## 構成
 
