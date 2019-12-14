@@ -20,7 +20,7 @@ menu:
     weight: 1
   - name: Blog
     pre: edit
-    url: /posts/
+    url: /post/
     weight: 2
   - name: Tags
     pre: tag
