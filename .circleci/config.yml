@@ -4,7 +4,7 @@ orbs:
 jobs:
   deploy:
     docker:
-      - image: cibuilds/base
+      - image: cibuilds/base:latest
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -27,6 +27,17 @@ jobs:
             git add -f .
             git commit -m "Deploy #$CIRCLE_BUILD_NUM from CircleCI [ci skip]"
             git push origin master -f
+  tweet:
+    docker:
+      - image: cibuilds/ruby:latest
+    steps:
+      - setup:
+          name: setup
+          command: |
+            gem install twurl
+            echo -n $TWIURL_RC | base64 -D > ~/.twurlrc
+      - attach_workspace:
+          at: .
 workflows:
   version: 2.1
   main:
