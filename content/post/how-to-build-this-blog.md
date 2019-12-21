@@ -2,6 +2,7 @@
 title: "Hugo, Github Pages, CircleCIつかってブログ構築"
 date: 2019-12-14T13:40:05+09:00
 draft: false
+categories: [ "tech" ]
 tags: ["Hugo", "CircleCI", "Github Pages", "Google Domains"]
 ---
 
