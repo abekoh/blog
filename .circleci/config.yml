@@ -36,13 +36,13 @@ jobs:
           name: setup twurl
           command: |
             gem install twurl -N
-            echo -n $TWIURL_RC | base64 -d > ~/.twurlrc
+            echo -n $TWURL_RC | base64 -d > ~/.twurlrc
       - run:
           name: tweet blog updates
           command: |
             # content/post内で新規Postの英語タイトル名リストを取得
             # ex) content/post/hoge.md
-            change_posts=`git diff HEAD^ HEAD --name-only --diff-filter=A | grep "content/post"
+            change_posts=`git diff HEAD^ HEAD --name-only --diff-filter=A | grep "content/post"`
             if [[ -z $change_posts ]]; then
               echo "There is no new posts."
               exit 0
