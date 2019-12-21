@@ -40,7 +40,7 @@ jobs:
           at: .
       - tweet:
           name: tweet blog updates
-          commands: |
+          command: |
             # content/post内で新規Postの英語タイトル名リストを取得
             # ex) content/post/hoge.md
             change_posts=`git diff HEAD^ HEAD --name-only --diff-filter=A | grep "content/post"
