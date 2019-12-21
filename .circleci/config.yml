@@ -31,14 +31,13 @@ jobs:
     docker:
       - image: cibuilds/ruby:latest
     steps:
-      - setup:
+      - checkout
+      - run:
           name: setup twurl
           command: |
             gem install twurl
             echo -n $TWIURL_RC | base64 -D > ~/.twurlrc
-      - attach_workspace:
-          at: .
-      - tweet:
+      - run:
           name: tweet blog updates
           command: |
             # content/post内で新規Postの英語タイトル名リストを取得
