@@ -59,7 +59,7 @@ jobs:
               url=https://blog.abekoh.dev/post/`echo $change_post | sed -r "s/^content\/post\/(.*)\.md/\1/g" || true`/
               if [[ -n $title ]]; then
                 post_body="[ブログ更新]\n$title\n$url"
-                twurl -d "status=$post_body" /1.1/statuses/update.json
+                twurl -d "status=`echo -e $post_body`" /1.1/statuses/update.json
               fi
             done
 workflows:
