@@ -35,7 +35,7 @@ jobs:
       - run:
           name: setup twurl
           command: |
-            gem install twurl
+            gem install twurl -N
             echo -n $TWIURL_RC | base64 -D > ~/.twurlrc
       - run:
           name: tweet blog updates
