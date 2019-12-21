@@ -22,3 +22,7 @@ Java, Spring Boot, TypeScript, AngularJS, Kubernetes, Cloud Foundry, Kafka, Orac
 
 興味あるもの:  
 Go, Kotlin, DDD, Vim, GCP, 自作キーボード
+
+## Privacy Policy
+
+当ブログでは、利用状況を把握するために[Google Analytics](https://analytics.google.com/analytics/web/)を利用しております。Google AnalyticsはCookieを利用して利用者の情報を収集します。Google Analyticsにおいてデータが収集、処理される仕組みについては、[こちら](https://policies.google.com/technologies/partner-sites?hl=ja)をご参照ください。
