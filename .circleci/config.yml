@@ -25,6 +25,11 @@ jobs:
             cp -v -R ../public/* ./
             echo "blog.abekoh.dev" > CNAME
             git add -f .
+            changed=`git diff-index --name-only HEAD --`
+            if [ -z $changed ]; then
+              echo "There are no changes in public."
+              exit 0
+            fi
             git commit -m "Deploy #$CIRCLE_BUILD_NUM from CircleCI [ci skip]"
             git push origin master -f
   tweet:
