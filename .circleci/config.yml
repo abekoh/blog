@@ -44,6 +44,10 @@ jobs:
             # content/post内で新規Postの英語タイトル名リストを取得
             # ex) content/post/hoge.md
             change_posts=`git diff HEAD^ HEAD --name-only --diff-filter=A | grep "content/post"
+            if [[ -z $change_posts ]]; then
+              echo "There is no new posts."
+              exit 0
+            fi
             for change_post in $change_posts; do
               # タイトル取得
               title=`cat $change_post | grep "^title:" | sed -r 's/title: "(.*)"$/\1/g'`
