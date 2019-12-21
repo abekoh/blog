@@ -32,12 +32,28 @@ jobs:
       - image: cibuilds/ruby:latest
     steps:
       - setup:
-          name: setup
+          name: setup twurl
           command: |
             gem install twurl
             echo -n $TWIURL_RC | base64 -D > ~/.twurlrc
       - attach_workspace:
           at: .
+      - tweet:
+          name: tweet blog updates
+          commands: |
+            # content/post内で新規Postの英語タイトル名リストを取得
+            # ex) content/post/hoge.md
+            change_posts=`git diff HEAD^ HEAD --name-only --diff-filter=A | grep "content/post"
+            for change_post in $change_posts; do
+              # タイトル取得
+              title=`cat $change_post | grep "^title:" | sed -r 's/title: "(.*)"$/\1/g'`
+              # URL生成
+              url=https://blog.abekoh.dev/post/`echo $change_post | sed -r "s/^content\/post\/(.*)\.md/\1/g"`/
+              if [[ -n $title ]]; then
+                post_body="[ブログ更新]\n$title\n$url"
+                twurl -d "status=$post_body" /1.1/statuses/update.json
+              fi
+            done
 workflows:
   version: 2.1
   main:
@@ -49,3 +65,6 @@ workflows:
           filters:
             branches:
               only: master
+      - tweet:
+          requires:
+            - deploy
