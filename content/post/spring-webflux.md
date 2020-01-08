@@ -30,3 +30,9 @@ https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reacti
 - https://stackoverflow.com/questions/55594738/how-to-retrieve-a-generated-id-when-saving-objects-with-spring-data-r2dbc-using
 test
 - https://howtodoinjava.com/spring-webflux/webfluxtest-with-webtestclient/
+- https://docs.google.com/presentation/d/1ygSM85-RQ3NZjCg6RaZ52mGzxbWiItVwzlCpr1vaWBw/edit#slide=id.g75f375afa0_0_0 RSocket
+
+- https://medium.com/@domenicosibilio/rsocket-with-spring-boot-js-zero-to-hero-ef63128f973d RSocket
+
+# H2とMySQL
+方言めんどい。あと、addでMySQLだといけるけどH2だとブロックするからNG、というエラーがあったので諦める
