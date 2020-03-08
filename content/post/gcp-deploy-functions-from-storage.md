@@ -3,7 +3,7 @@ title: "Cloud Storage経由でCloud Buildを動かしてデプロイする"
 date: 2020-03-08T23:30:00+09:00
 draft: false
 categories: [ "tech" ]
-tags: [ "GCP", "Cloud Functions", "Cloud Build", "Cloud Storage", "Node.js" ]
+tags: [ "GCP", "Cloud Functions", "Cloud Build", "Cloud Storage", "Node.js", "JavaScript" ]
 ---
 
 GCPサービスの1つ、[Cloud Build](https://cloud.google.com/cloud-build)はいわゆるCI/CDツールです。
