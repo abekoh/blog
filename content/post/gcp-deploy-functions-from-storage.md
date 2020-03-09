@@ -7,13 +7,13 @@ tags: [ "GCP", "Cloud Functions", "Cloud Build", "Cloud Storage", "Node.js", "Ja
 ---
 
 GCPサービスの1つ、[Cloud Build](https://cloud.google.com/cloud-build)はいわゆるCI/CDツールです。
-GithubなどGitレポジトリに紐づけてトリガーさせて使うのが普通だと思います。トリガーとしても現状、リポジトリ経由しか選択できません。
+GithubなどGitレポジトリに紐づけてトリガーさせて使うのが普通だと思います。UIから設定できるトリガーとしても現状、リポジトリ経由しか選択できません。
 
 しかし、業務のある都合で[Cloud Storage](https://cloud.google.com/storage)経由でデプロイしたいことがありまして。
 やり方を模索してみてうまくいったので、メモっておきます。
 
 ## ソース
-今回使ったものすべてこちらに置いてます。
+こちらに置いてます。
 
 [abekoh/gcp-deploy-from-storage](https://github.com/abekoh/gcp-deploy-from-storage)
 
@@ -21,7 +21,7 @@ GithubなどGitレポジトリに紐づけてトリガーさせて使うのが�
 ![全体像](/images/gcp-deploy-functions-from-storage.svg)
 
 今回はhello-funcというファンクションを、tar.gzに圧縮したソースからCloud Functionsにデプロイするというシナリオとします。
-デプロイ対象はApp Engineとか、別のサービスでもいけると思います。
+デプロイ対象はApp Engineとか、別のサービスでもいけるはず。
 
 ## デプロイ対象
 シンプルにHTTPリクエストおくるとHelloが返ってくるFunctionです。Node.jsで書きます。
@@ -100,7 +100,7 @@ exports.build = async file => {
 ```
 
 [createBuild](https://googleapis.dev/nodejs/cloudbuild/latest/v1.CloudBuildClient.html#createBuild)というメソッドで、任意のオプションからCloud Buildを起動させます。
-このリクエスト内ではリポジトリだけでなくCloud Storageを指定することでき、今回やりたかったことが達成できます。
+このリクエストではリポジトリだけでなくCloud Storageを指定することでき、今回やりたかったことが達成できます。
 
 また、リクエストにプロジェクトIDを含める必要があります。
 Node.js 8系までは `GCP_PROJECT` という環境変数で取得できたようですが、Node.js 10系では取得できなくなったようです。
@@ -117,7 +117,7 @@ gcloud functions deploy build-func \
   --memory=256MB \
   --region=us-central1 \
   --trigger-bucket=src-func \
-  --set-env-vars GCP_PRJECT_ID={GCPプロジェクト名}
+  --set-env-vars GCP_PROJECT_ID={GCPプロジェクト名}
 ```
 
 `--trigger-bucket`には、デプロイしたいファイルを置くバケットを指定します。
