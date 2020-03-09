@@ -79,7 +79,7 @@ github = "abekoh"
 twitter = "abekoh_bcky"
 
 [params.comments]
-enable = false
+enable = true
 
 # Isso: https://posativ.org/isso/
 [params.comments.isso]
