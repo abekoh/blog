@@ -1,7 +1,7 @@
 baseURL = "https://blog.abekoh.dev"
 title = "abekoh's tech note"
 # for smart copyright line, leave this blank and check [params.copyright]
-copyright = "© abekoh"
+copyright = "© 2019 abekoh"
 
 theme = "engimo"
 
